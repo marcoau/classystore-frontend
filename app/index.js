@@ -1,8 +1,8 @@
 'use strict';
 
-import React from 'react';
 import ReactDOM from 'react-dom';
+import Router from 'react-router';
 
-import appRoutes from './App.react';
+import routes from './routes';
 
-ReactDOM.render(appRoutes, document.getElementById('app'));
+ReactDOM.render(routes, document.getElementById('app'));
