@@ -8,7 +8,8 @@ export default class ProductView extends Component {
 
     return (
       <div>
-        <h2>Product Page</h2>
+        <h2>西班牙頂級橡果火腿</h2>
+        <h3>Jamon Iberico de Bellota</h3>
         <h3>ID: { params.pId }</h3>
       </div>
     );
