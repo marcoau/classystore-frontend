@@ -1,7 +1,24 @@
 body {
   font-family: Arial, 'Noto Sans TC', sans-serif;
 }
+#app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.wrapper {
+  height: 100%;
+}
+.content {
+  min-height: 100%;
 
+  padding-top: 60px;
+  margin-bottom: -100px;
+}
+
+div {
+  box-sizing: border-box;
+}
 h1 {
   color: red;
 }

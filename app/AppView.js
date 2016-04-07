@@ -11,9 +11,11 @@ export default class App extends Component {
     const { children } = this.props;
 
     return (
-      <div>
+      <div className='wrapper'>
         <Header />
-        { children }
+        <div className='content'>
+          { children }
+        </div>
         <Footer />
       </div>
     );
