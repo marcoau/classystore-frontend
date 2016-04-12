@@ -22,3 +22,38 @@ div {
 h1 {
   color: red;
 }
+
+// Elements
+button, .button {
+  background: none;
+
+  height: 40px;
+
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  line-height: 40px;
+
+  padding: 0px 15px;
+  border: none;
+  border-radius: 3px;
+
+  &:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  &._bordered {
+    border: 1px solid hsla(0,0,30%,20%);
+  }
+
+  $fb-color: hsl(221,61,60);
+  &._fb {
+    border-color: $fb-color;
+    color: $fb-color;
+  }
+}
+
+i {
+  margin-right: 8px;
+}
