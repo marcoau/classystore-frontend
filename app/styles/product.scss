@@ -1,0 +1,32 @@
+.product {
+  display: inline-block;
+  // TEMP
+  width: 200px;
+  height: 300px;
+
+  padding: 20px;
+
+  border: 1px solid hsla(0,0,0,0.2);
+  img {
+    width: 100%;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  &-price, &-saved {
+    text-align: right;
+  }
+
+  &-price {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+  }
+  &-saved {
+    font-size: 12px;
+  }
+}

@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, 'Noto Sans TC', sans-serif;
+  font-family: 'Source Sans Pro', Arial, 'Noto Sans TC', sans-serif;
 }
 #app {
   position: absolute;
@@ -20,7 +20,10 @@ div {
   box-sizing: border-box;
 }
 h1 {
-  color: red;
+  font-family: 'Vollkorn', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 40px;
 }
 
 // Elements
@@ -44,12 +47,12 @@ button, .button {
   }
 
   &._bordered {
-    border: 1px solid hsla(0,0,30%,20%);
+    border: 1px solid hsla(0,0,30%,0.2);
   }
 
   $fb-color: hsl(221,61,60);
   &._fb {
-    border-color: $fb-color;
+    border-color: hsl(221,61,60);
     color: $fb-color;
   }
 }

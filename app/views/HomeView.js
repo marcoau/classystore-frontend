@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+import Product from './../components/Product';
+
 export default class HomeView extends Component {
 	render() {
     return (
@@ -19,6 +21,13 @@ export default class HomeView extends Component {
             <Link to={'/products/banana'}>Product Banana</Link>
           </li>
         </ul>
+        <div>
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+
+        </div>
       </div>
     );
   }
