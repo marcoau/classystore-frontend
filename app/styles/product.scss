@@ -1,8 +1,21 @@
+// for constant aspect ratio
+.product-wrapper {
+  @include span(3 of 12);
+  position: relative;
+}
+.product-wrapper:after {
+  padding-top: 150%;
+  display: block;
+  content: '';
+}
+
 .product {
-  display: inline-block;
-  // TEMP
-  width: 200px;
-  height: 300px;
+  // for constant aspect ratio
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
   padding: 20px;
 

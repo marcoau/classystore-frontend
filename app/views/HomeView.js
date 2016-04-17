@@ -26,7 +26,6 @@ export default class HomeView extends Component {
           <Product />
           <Product />
           <Product />
-
         </div>
       </div>
     );

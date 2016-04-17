@@ -1,3 +1,8 @@
+// SUSY
+$susy: (
+  gutter-position: split
+);
+
 body {
   font-family: 'Source Sans Pro', Arial, 'Noto Sans TC', sans-serif;
 }
@@ -27,6 +32,11 @@ h1 {
 }
 
 // Elements
+.container {
+  @include container(1200px);
+  margin: 0 auto;
+}
+
 button, .button {
   background: none;
 
