@@ -21,7 +21,8 @@ export default class HomeView extends Component {
             <Link to={'/products/banana'}>Product Banana</Link>
           </li>
         </ul>
-        <div>
+        <div className='container'>
+          <h2>大熱產品</h2>
           <Product />
           <Product />
           <Product />
