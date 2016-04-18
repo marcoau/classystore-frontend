@@ -1,12 +1,17 @@
 'use strict';
 
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class Header extends Component {
   render() {
     return (
       <div className='header'>
-        <h1>Classy Store</h1>
+        <h1>
+          <Link to={''}>
+            ClassyStore.
+          </Link>
+        </h1>
         <div className='header-left'>
           <a className='button' href>
             <i className='fa fa-shopping-bag' aria-hidden={true}></i>
@@ -16,23 +21,20 @@ export default class Header extends Component {
             <i className='fa fa-cutlery' aria-hidden={true}></i>
             美食佳餚
           </a>
-          <a className='button' href>
+          <a className='button _beauty' href>
             <i className='fa fa-flask' aria-hidden={true}></i>
             美容扮靚
           </a>
-        </div>
-        <div className='header-search'>
-          <input placeholder='Search for products' />
         </div>
         <div className='header-right'>
           <button className='_bordered _fb'>
             <i className='fa fa-facebook-square' aria-hidden={true}></i>
               FB登入
           </button>
-          <button>
+          <Link to={'/cart'} className='button'>
             <i className='fa fa-shopping-cart' aria-hidden={true}></i>
             購物車
-          </button>
+          </Link>
         </div>
       </div>
     );

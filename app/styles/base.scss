@@ -14,16 +14,8 @@ body {
 .wrapper {
   height: 100%;
 }
-.content {
-  min-height: 100%;
 
-  padding-top: 60px;
-  margin-bottom: -100px;
-}
-
-div {
-  box-sizing: border-box;
-}
+// inline elements
 h1 {
   font-family: 'Vollkorn', serif;
   font-size: 36px;
@@ -33,18 +25,45 @@ h1 {
 
 h2 {
   @include span(12 of 12);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 72px;
+}
+
+h3 {
+  @include span(12 of 12);
   font-size: 24px;
   font-weight: 700;
   line-height: 48px;
 }
 
-// Elements
+a {
+  color: black;
+  text-decoration: none;
+}
+
+i {
+  margin-right: 8px;
+}
+
+// box elements
+div {
+  box-sizing: border-box;
+}
+
+.content {
+  min-height: 100%;
+  padding-top: 60px;
+}
+
 .container {
   @include container(1200px);
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 button, .button {
+  display: inline-block;
   background: none;
 
   height: 40px;
@@ -59,12 +78,24 @@ button, .button {
   border-radius: 3px;
 
   &:hover {
-    opacity: 0.6;
+    // opacity: 0.6;
     cursor: pointer;
+  }
+  &._cart {
+    color: white;
   }
 
   &._bordered {
     border: 1px solid hsla(0,0,30%,0.2);
+  }
+
+  &._beauty {
+    &:hover {
+      background-color: hsla(300,100%,40%,0.1);
+    }
+    &._cart {
+      background-color: hsla(300,100%,40%,1);
+    }
   }
 
   $fb-color: hsl(221,61,60);
@@ -74,6 +105,7 @@ button, .button {
   }
 }
 
-i {
-  margin-right: 8px;
+// modifiers
+._right {
+  float: right;
 }

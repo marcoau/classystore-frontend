@@ -2,6 +2,8 @@
 .product-wrapper {
   @include span(3 of 12);
   position: relative;
+  min-height: 300px;
+  margin-bottom: 10px;
 }
 .product-wrapper:after {
   padding-top: 150%;
@@ -42,4 +44,15 @@
   &-saved {
     font-size: 12px;
   }
+}
+
+// in product view
+.product-image {
+  @include span(7 of 12);
+
+}
+.product-details {
+  @include span(5 of 12);
+
+  margin-top: 20px;
 }
