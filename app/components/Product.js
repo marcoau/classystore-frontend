@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 export default class Product extends Component {
   render() {
     return (
-      <div className='product-wrapper'>
+      <div className='product-wrapper _beauty'>
         <Link to={'/products/apple'}>
           <div className='product'>
             <img src='http://www.perfumecopy.com/wp-content/uploads/2016/03/lancome_vie_belle.jpg' />

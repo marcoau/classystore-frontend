@@ -78,10 +78,12 @@ button, .button {
   border-radius: 3px;
 
   &:hover {
-    // opacity: 0.6;
+    opacity: 0.6;
     cursor: pointer;
   }
+
   &._cart {
+    margin: 20px 0;
     color: white;
   }
 
@@ -89,23 +91,56 @@ button, .button {
     border: 1px solid hsla(0,0,30%,0.2);
   }
 
-  &._beauty {
-    &:hover {
-      background-color: hsla(300,100%,40%,0.1);
-    }
-    &._cart {
-      background-color: hsla(300,100%,40%,1);
-    }
-  }
-
   $fb-color: hsl(221,61,60);
   &._fb {
     border-color: hsl(221,61,60);
     color: $fb-color;
+
+    &:hover {
+      background-color: $fb-color;
+      color: white;
+      opacity: 1;
+    }
   }
 }
 
 // modifiers
 ._right {
   float: right;
+}
+
+._fashion, ._beauty, ._food {
+  &:hover {
+    opacity: 1;
+  }
+  &._cart:hover {
+    opacity: 0.6;
+  }
+}
+
+._fashion {
+  &:hover {
+    background-color: hsla(250,100%,20%,0.05);
+  }
+  &._cart {
+    background-color: hsla(250,100%,20%,1);
+  }
+}
+
+._beauty {
+  &:hover {
+    background-color: hsla(310,100%,20%,0.05);
+  }
+  &._cart {
+    background-color: hsla(310,100%,20%,1);
+  }
+}
+
+._food {
+  &:hover {
+    background-color: hsla(100,100%,20%,0.05);
+  }
+  &._cart {
+    background-color: hsla(100,100%,20%,1);
+  }
 }

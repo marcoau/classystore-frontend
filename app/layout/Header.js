@@ -13,11 +13,11 @@ export default class Header extends Component {
           </Link>
         </h1>
         <div className='header-left'>
-          <a className='button' href>
+          <a className='button _fashion' href>
             <i className='fa fa-shopping-bag' aria-hidden={true}></i>
             時裝潮物
           </a>
-          <a className='button' href>
+          <a className='button _food' href>
             <i className='fa fa-cutlery' aria-hidden={true}></i>
             美食佳餚
           </a>
