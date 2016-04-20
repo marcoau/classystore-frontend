@@ -5,15 +5,20 @@ import { Link } from 'react-router';
 
 export default class Product extends Component {
   render() {
-    return (
-      <div className='product-wrapper _beauty'>
-        <Link to={'/products/apple'}>
-          <div className='product'>
-            <img src='http://www.perfumecopy.com/wp-content/uploads/2016/03/lancome_vie_belle.jpg' />
-            <h4 className='product-title'>Lancome La vie est belle<br />美好人生香水</h4>
+    const { id, name, category, imageUrl, price, originalPrice } = this.props.product;
 
-            <p className='product-price'>$100.00</p>
-            <p className='product-saved'>Saved $30.00*</p>
+    const discountAmount = originalPrice - price;
+    const discountPercentage = discountAmount / originalPrice * 100;
+
+    return (
+      <div className={`product-wrapper _${category}`}>
+        <Link to={`/products/${id}`}>
+          <div className='product'>
+            <img src={imageUrl} />
+            <h4 className='product-title'>{name.en}<br />{name['zh-HK']}</h4>
+
+            <p className='product-price'>${price.toFixed(2)}</p>
+            <p className='product-saved'>Saved ${discountAmount.toFixed(2)} (${discountPercentage.toFixed(2)})*</p>
           </div>
         </Link>
       </div>
