@@ -25,20 +25,20 @@ export default class SearchView extends Component {
     const { location } = props;
     const query = location.query;
 
-    let refQuery;
-    if(query.cat) {
-      refQuery = this._productsRef.orderByChild('category').equalTo(query.cat);
-
-    } else {
-      refQuery = this._productsRef.orderByChild('category');
-    }
+    let refQuery = this._productsRef.orderByChild('category');
+    if(query.cat) refQuery = refQuery.equalTo(query.cat);
 
     refQuery.once('value', dataSnapshot => {
       const data = dataSnapshot.val();
       const newProducts = [];
 
       for(let id in data) {
-        newProducts.push(data[id]);
+        const product = data[id];
+
+        // filters
+        if(query.brand && query.brand !== product.brand) continue;
+
+        newProducts.push(product);
       }
 
       this.setState({
