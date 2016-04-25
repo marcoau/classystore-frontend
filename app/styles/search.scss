@@ -1,0 +1,13 @@
+.search {
+  .container {
+    @include container(100%);
+  }
+
+  &-filter {
+    @include span(2 of 12);
+  }
+
+  &-products {
+    @include span(10 of 12);
+  }
+}

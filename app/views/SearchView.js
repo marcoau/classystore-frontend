@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import Filter from './../components/Filter';
 import Product from './../components/Product';
 
 export default class SearchView extends Component {
@@ -60,11 +61,16 @@ export default class SearchView extends Component {
     const Products = this.state.products.map(p => ( <Product key={p.id} product={p} /> ));
 
     return (
-      <div>
+      <div className='search'>
         <div className='container'>
-          {CatHeader}
-          {QHeader}
-          {Products}
+          <div className='search-filter'>
+            <Filter query={query} />
+          </div>
+          <div className='search-products'>
+            {CatHeader}
+            {QHeader}
+            {Products}
+          </div>
         </div>
       </div>
     );
