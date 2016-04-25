@@ -39,7 +39,7 @@ export default class ProductView extends Component {
             <h3>{name ? name.en : ''}</h3>
             <h2>{name ? name['zh-HK'] : ''}</h2>
             <p>
-              {description ? description['zh-HK'] : ''}
+              {description ? description['en'] : ''}
             </p>
             <button className={`_${category} _cart _right`}>
               <i className="fa fa-shopping-bag" aria-hidden={true}></i>
