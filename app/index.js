@@ -1,5 +1,7 @@
 'use strict';
 
+import files from './files';
+
 import ReactDOM from 'react-dom';
 import Router from 'react-router';
 
