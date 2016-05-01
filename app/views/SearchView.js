@@ -27,7 +27,7 @@ export default class SearchView extends Component {
     const query = location.query;
 
     let refQuery = this._productsRef.orderByChild('category');
-    if(query.cat) refQuery = refQuery.equalTo(query.cat);
+    if(query.category) refQuery = refQuery.equalTo(query.category);
 
     refQuery.once('value', dataSnapshot => {
       const data = dataSnapshot.val();
@@ -52,8 +52,8 @@ export default class SearchView extends Component {
     const { params, location } = this.props;
     const query = location.query;
 
-    const CatHeader = query.cat ?
-      ( <h3>{query.cat}類</h3> ) : null;
+    const CatHeader = query.category ?
+      ( <h3>{query.category}類</h3> ) : null;
 
     const QHeader = query.q ?
       ( <h3>找到與「{query.q}」相關的產品</h3> ) : null;
