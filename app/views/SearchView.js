@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import Filter from './../components/Filter';
 import Product from './../components/Product';
 
+import Stickyfill from 'stickyfill';
+
 export default class SearchView extends Component {
   constructor() {
     super();
@@ -16,6 +18,11 @@ export default class SearchView extends Component {
   componentDidMount() {
     this._productsRef = new Firebase(`https://classy-store.firebaseio.com/products`);
     this.pullProducts(this.props);
+
+    // use Stickyfill for search filters sidebar
+    const stickyfill = new Stickyfill();
+    const searchFilterElem = document.getElementsByClassName('search-filter')[0];
+    stickyfill.add(searchFilterElem);
   }
 
   componentWillReceiveProps(nextProps) {
