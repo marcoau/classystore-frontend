@@ -1,6 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
 import CartProduct from './../components/CartProduct';
 
 export default class CartView extends Component {
@@ -18,10 +20,10 @@ export default class CartView extends Component {
             <p className='cart-total-price'>$400.00</p>
           </div>
 
-          <button className='cart-checkout _right'>
+          <Link to={'/checkout'} className='button cart-checkout _right'>
             <i className='fa fa-credit-card' aria-hidden={true}></i>
             結帳
-          </button>
+          </Link>
         </div>
       </div>
     );
