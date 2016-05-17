@@ -60,6 +60,10 @@ div {
   @include container(1200px);
   margin: 0 auto;
   padding: 20px 0;
+
+  &._small {
+    @include container(960px);
+  }
 }
 
 button, .button {

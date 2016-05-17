@@ -7,7 +7,7 @@ export default class CartView extends Component {
   render() {
     return (
       <div className='cart'>
-        <div className='container'>
+        <div className='container _small'>
           <h3>購物車</h3>
           <CartProduct />
           <CartProduct />

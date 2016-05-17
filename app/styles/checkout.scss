@@ -1,9 +1,9 @@
-.cart-product, .cart-total {
-  @include span(12 of 12);
+.checkout-product, .checkout-total {
+  // @include span(12 of 12);
   @include container(100%);
 
-  height: 100px;
-  padding: 10px;
+  height: 60px;
+  padding: 5px;
 
   &-image, &-name, &－title, &-price {
     display: inline-block;
@@ -21,31 +21,31 @@
 
   &-name {
     @include span(8 of 12);
-    font-size: 24px;
+    font-size: 18px;
   }
 
   &-title {
     @include span(10 of 12);
-    font-size: 24px;
+    font-size: 18px;
   }
 
   &-price {
     @include span(2 of 12);
-    font-size: 32px;
+    font-size: 24px;
 
     text-align: right;
   }
 }
 
-.cart-total {
+.checkout-total {
   &-price {
     font-weight: 700;
   }
 }
 
 // add dynamic color
-.cart-checkout {
-  background-color: hsla(220,100%,20%,1);
+.checkout-pay {
+  background-color: hsla(250,100%,20%,1);
   color: white;
 
   font-size: 36px;
