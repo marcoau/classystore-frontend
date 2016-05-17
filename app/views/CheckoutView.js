@@ -4,6 +4,28 @@ import React, { Component } from 'react';
 import CheckoutProduct from './../components/CheckoutProduct';
 
 export default class CheckoutView extends Component {
+  constructor() {
+    super();
+
+    this.stripeHandler = StripeCheckout.configure({
+      key: 'pk_test_N1wkExc5iUZM2g3im06rROVe',
+      image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/17663-200.png',
+      locale: 'auto',
+      token: token => {
+        console.log('token:');
+        console.log(token);
+      }
+    });
+  }
+
+  clickPay() {
+    this.stripeHandler.open({
+      name: 'ClassyStore',
+      description: '4件產品',
+      amount: 40000
+    });
+  }
+
   render() {
     return (
       <div className='checkout'>
@@ -27,7 +49,7 @@ export default class CheckoutView extends Component {
             <p>Hong Kong Shatin Lalala</p>
           </div>
 
-          <button className='checkout-pay _right'>
+          <button className='checkout-pay _right' onClick={this.clickPay.bind(this)}>
             <i className='fa fa-credit-card' aria-hidden={true}></i>
             付款
           </button>
