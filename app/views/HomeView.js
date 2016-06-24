@@ -2,9 +2,11 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Firebase from 'firebase';
+import request from 'superagent';
 
 import Product from './../components/Product';
+
+const API_URL = process.env.API_URL;
 
 export default class HomeView extends Component {
   constructor() {
@@ -15,25 +17,26 @@ export default class HomeView extends Component {
     };
   }
 
-  componentDidMount() {
-    const productsRef = new Firebase(`https://classy-store.firebaseio.com/products`);
+  getProducts() {
+    const productsUrl = `${API_URL}/api/products`;
 
-    productsRef.on('value', dataSnapshot => {
-      const data = dataSnapshot.val();
-      const newProducts = [];
+    request.get(productsUrl)
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        const products = res.body.data;
 
-      for(let id in data) {
-        newProducts.push(data[id]);
-      }
-
-      this.setState({
-        products: newProducts,
+        this.setState({
+          products: products,
+        });
       });
-    });
+  }
+
+  componentDidMount() {
+    this.getProducts();
   }
 
 	render() {
-    const Products = this.state.products.map(p => ( <Product key={p.id} product={p} /> ));
+    const Products = this.state.products.map(p => ( <Product key={p.productId} product={p} /> ));
 
     return (
       <div>

@@ -5,14 +5,14 @@ import { Link } from 'react-router';
 
 export default class Product extends Component {
   render() {
-    const { id, name, category, imageUrl, price, originalPrice } = this.props.product;
+    const { productId, name, category, imageUrl, price, originalPrice } = this.props.product;
 
     const discountAmount = originalPrice - price;
     const discountPercentage = discountAmount / originalPrice * 100;
 
     return (
       <div className={`product-wrapper _${category}`}>
-        <Link to={`/products/${id}`}>
+        <Link to={`/products/${productId}`}>
           <div className='product'>
             <img src={imageUrl} />
             <h4 className='product-title'>{name.en}<br />{name['zh-HK']}</h4>

@@ -3,8 +3,11 @@
 import React, { Component } from 'react';
 import Filter from './../components/Filter';
 import Product from './../components/Product';
+import request from 'superagent';
 
 import Stickyfill from 'stickyfill';
+
+const API_URL = process.env.API_URL;
 
 export default class SearchView extends Component {
   constructor() {
@@ -33,26 +36,18 @@ export default class SearchView extends Component {
     const { location } = props;
     const query = location.query;
 
-    let refQuery = this._productsRef.orderByChild('category');
-    if(query.category) refQuery = refQuery.equalTo(query.category);
+    let productsUrl = `${API_URL}/api/products`;
+    if(query.q) productsUrl += `?q=${query.q}`;
 
-    refQuery.once('value', dataSnapshot => {
-      const data = dataSnapshot.val();
-      const newProducts = [];
+    request.get(productsUrl)
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        const products = res.body.data;
 
-      for(let id in data) {
-        const product = data[id];
-
-        // filters
-        if(query.brand && query.brand !== product.brand) continue;
-
-        newProducts.push(product);
-      }
-
-      this.setState({
-        products: newProducts,
+        this.setState({
+          products: products,
+        });
       });
-    });
   }
 
   render() {
@@ -65,7 +60,7 @@ export default class SearchView extends Component {
     const QHeader = query.q ?
       ( <h3>找到與「{query.q}」相關的產品</h3> ) : null;
 
-    const Products = this.state.products.map(p => ( <Product key={p.id} product={p} /> ));
+    const Products = this.state.products.map(p => ( <Product key={p.productId} product={p} /> ));
 
     return (
       <div className='search'>

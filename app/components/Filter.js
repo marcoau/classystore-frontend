@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Firebase from 'firebase';
 
 export default class Filter extends Component {
   constructor() {
@@ -11,16 +12,6 @@ export default class Filter extends Component {
       brands: [],
       types: [],
     };
-  }
-
-  buildQueryString(query) {
-    const queries = [];
-
-    for(let param in query) {
-      queries.push(`${param}=${query[param]}`);
-    }
-
-    return queries.length ? queries.join('&') : '';
   }
 
   componentDidMount() {
@@ -73,14 +64,19 @@ export default class Filter extends Component {
   }
 
   render() {
-    const currentQuery = this.props.query;
+    let currentQuery = {};
+    try {
+      currentQuery = JSON.parse(this.props.query.q);
+
+    } catch(err) {
+    }
 
     const brandFilters = this.state.brands.map(b => {
-      const newQuery = Object.assign(currentQuery, { brand: b.name });
+      const newQuery = Object.assign({ brand: b.name }, currentQuery);
 
       return (
         <p key={b.id} className='filter-group-link'>
-          <Link to={`/search?${this.buildQueryString(newQuery)}`}>
+          <Link to={`/search?q=${JSON.stringify(newQuery)}`}>
             {b.name}
           </Link>
         </p>
@@ -88,22 +84,31 @@ export default class Filter extends Component {
     });
 
     const typeFilters = this.state.types.map(t => {
-      const newQuery = Object.assign(currentQuery, { type: t.name.en });
+      const newQuery = Object.assign({ type: t.name.en }, currentQuery);
+      delete newQuery.brand;
 
       return (
         <p key={t.id} className='filter-group-link'>
-          <Link to={`/search?${this.buildQueryString(newQuery)}`}>
+          <Link to={`/search?q=${JSON.stringify(newQuery)}`}>
             {t.name['zh-HK']}
           </Link>
         </p>
       );
     });
 
-    const allBrandsQuery = Object.assign(currentQuery);
+    const allBrandsQuery = Object.assign({}, currentQuery);
     delete allBrandsQuery.brand;
 
-    const allTypesQuery = Object.assign(currentQuery);
+    const allBrandsLink = Object.keys(allBrandsQuery).length ?
+      `/search?q=${JSON.stringify(allBrandsQuery)}` :
+      '/search';
+
+    const allTypesQuery = Object.assign({}, currentQuery);
     delete allTypesQuery.type;
+
+    const allTypesLink = Object.keys(allTypesQuery).length ?
+      `/search?q=${JSON.stringify(allTypesQuery)}` :
+      '/search';
 
     return (
       <div className='filter'>
@@ -111,7 +116,7 @@ export default class Filter extends Component {
         <div className='filter-group'>
           <h4>品牌</h4>
           <p className='filter-group-link'>
-            <Link to={`/search?${this.buildQueryString(allBrandsQuery)}`}>
+            <Link to={allBrandsLink}>
               全部
             </Link>
           </p>
@@ -120,7 +125,7 @@ export default class Filter extends Component {
         <div className='filter-group'>
           <h4>類別</h4>
           <p className='filter-group-link'>
-            <Link to={`/search?${this.buildQueryString(allTypesQuery)}`}>
+            <Link to={allTypesLink}>
               全部
             </Link>
           </p>
