@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 import Product from './../components/Product';
+import request from 'superagent';
+
+const API_URL = process.env.API_URL;
 
 export default class ProductView extends Component {
   constructor() {
@@ -12,17 +15,23 @@ export default class ProductView extends Component {
     };
   }
 
-  componentDidMount() {
+  getProduct() {
     const { params } = this.props;
-    const productRef = new Firebase(`https://classy-store.firebaseio.com/products/${params.pId}`);
+    const productUrl = `${API_URL}/api/products/${params.pId}`;
 
-    productRef.on('value', dataSnapshot => {
-      const productData = dataSnapshot.val();
+    request.get(productUrl)
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        const product = res.body.data;
 
-      this.setState({
-        product: productData
+        this.setState({
+          product: product,
+        });
       });
-    });
+  }
+
+  componentDidMount() {
+    this.getProduct();
   }
 
   render() {
