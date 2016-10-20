@@ -1,13 +1,10 @@
 .header {
   position: fixed;
-  z-index: 100;
+  z-index: 900;
   top: 0;
   width: 100%;
   height: 60px;
   padding: 10px;
-
-  background-color: white;
-  border-bottom: 1px solid hsl(0,0%,70%);
 
   h1, &-left, &-search, &-right {
     display: inline-block;

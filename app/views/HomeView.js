@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import request from 'superagent';
 
+import HomeHero from './../components/HomeHero';
 import Product from './../components/Product';
 
 const API_URL = process.env.API_URL;
@@ -40,6 +41,7 @@ export default class HomeView extends Component {
 
     return (
       <div>
+        <HomeHero />
         <div className='container'>
           <h3>大熱產品</h3>
           { Products }
