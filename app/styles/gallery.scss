@@ -1,0 +1,12 @@
+.gallery {
+  position: relative;
+  z-index: 200;
+
+  &-product {
+    @include span(1 of 7);
+
+    img {
+      width: 100%;
+    }
+  }
+}

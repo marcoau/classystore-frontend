@@ -4,13 +4,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import request from 'superagent';
 
-import HomeHero from './../components/HomeHero';
+import BrandBanner from './../components/BrandBanner';
 import Gallery from './../components/Gallery';
 import Product from './../components/Product';
 
 const API_URL = process.env.API_URL;
 
-export default class HomeView extends Component {
+export default class BrandView extends Component {
   constructor() {
     super();
 
@@ -37,17 +37,13 @@ export default class HomeView extends Component {
     this.getProducts();
   }
 
-	render() {
+  render() {
     const Products = this.state.products.map(p => ( <Product key={p.productId} product={p} /> ));
 
     return (
       <div>
-        <HomeHero />
+        <BrandBanner />
         <Gallery products={ this.state.products ? this.state.products.slice(0,7) : [] }/>
-        <div className='container'>
-          <h3>大熱產品</h3>
-          { Products }
-        </div>
       </div>
     );
   }

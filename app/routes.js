@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './AppView';
 import HomeView from './views/HomeView';
+import BrandView from './views/BrandView';
 import CartView from './views/CartView';
 import CheckoutView from './views/CheckoutView';
 import SearchView from './views/SearchView';
@@ -14,6 +15,7 @@ const routes = (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
       <IndexRoute component={HomeView} />
+      <Route path='brands/:bId' component={ BrandView } />
       <Route path='cart' component={CartView} />
       <Route path='checkout' component={CheckoutView} />
       <Route path='search' component={SearchView} />
